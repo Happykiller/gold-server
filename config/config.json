@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "sandbox",
+    "password": "sandbox",
+    "database": "sandbox",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "JWT_SECRET": "CHUTSECRET"
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": ":memory:",
+    "JWT_SECRET": "CHUTSECRET"
+  },
+  "production": {
+    "username": "process.env.DB_USERNAME",
+    "password": "process.env.DB_PASSWORD",
+    "database": "process.env.DB_NAME",
+    "host": "process.env.DB_HOSTNAME",
+    "dialect": "mysql",
+    "use_env_variable": "DATABASE_URL",
+    "JWT_SECRET": "CHUTSECRET"
+  }
+}

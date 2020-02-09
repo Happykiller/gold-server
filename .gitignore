@@ -6,6 +6,9 @@ logs
 *.log
 npm-debug.log*
 
+# Temp
+*.sqlite
+
 # Bower dependency directory (https://bower.io/)
 bower_components
 
