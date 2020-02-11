@@ -1,0 +1,11 @@
+### For create token
+POST http://192.168.1.110:3000/auth/ HTTP/1.1
+content-type: application/json
+
+{
+    "email": "example@example.com"
+}
+
+### for get user by id
+GET http://192.168.1.110:3000/user/1 HTTP/1.1
+?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkRvZSIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSJ9LCJpYXQiOjE1ODE0MzU2NzAsImV4cCI6MTU4MTQzOTI3MH0.8VhQhLGgtEdj4CLRW0ynx1ntIwaEVvN8PYVPrg1LQtw

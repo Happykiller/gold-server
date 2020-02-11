@@ -1,9 +1,9 @@
-var jwt  = require('jsonwebtoken');
-var _ = require('lodash');
+const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 
-var createJWToken = function(details)
+let createJWToken = function(details)
 {
   if (typeof details !== 'object')
   {
@@ -34,7 +34,7 @@ var createJWToken = function(details)
   return token
 }
 
-var verifyJWTToken = function(token) {
+let verifyJWTToken = function(token) {
   return new Promise((resolve, reject) =>
   {
     jwt.verify(token, config.JWT_SECRET, (err, decodedToken) => 
@@ -49,24 +49,5 @@ var verifyJWTToken = function(token) {
   })
 }
 
-var verifyJWT_MW = function(req, res, next){
-  let token = (req.method === 'POST') ? req.body.token : req.query.token
-
-  verifyJWTToken(token)
-    .then((decodedToken) =>
-    {
-      req.user = decodedToken.data
-      next()
-    })
-    .catch((err) =>
-    {
-      res.status(400)
-      .json({
-        message: "Invalid auth token provided."
-      })
-    })
-}
-
 module.exports.createJWToken = createJWToken;
 module.exports.verifyJWTToken = verifyJWTToken;
-module.exports.verifyJWT_MW = verifyJWT_MW;
