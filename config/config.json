@@ -3,9 +3,8 @@
     "username": "sandbox",
     "password": "sandbox",
     "database": "sandbox",
-    "host": "127.0.0.1",
+    "host": "db",
     "dialect": "mysql",
-    "operatorsAliases": false,
     "JWT_SECRET": "CHUTSECRET"
   },
   "test": {
