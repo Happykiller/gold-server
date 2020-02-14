@@ -1,6 +1,6 @@
 FROM node:latest
-WORKDIR /app/
-COPY . .
 RUN npm i -g nodemon
-RUN npm i
-CMD [ "npm", "run", "dev" ]
+COPY entrypoint.sh /
+RUN chmod +x entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["npm" , "run", "dev"]
