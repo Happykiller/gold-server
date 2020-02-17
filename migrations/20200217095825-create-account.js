@@ -1,32 +1,33 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Accounts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      lastName: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      email: {
+      label: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
       },
-      token: {
-        type: Sequelize.STRING
+      type: {
+        type: Sequelize.ENUM,
+        allowNull: false,
+        values: ['account.type-regular', 'account.type-template']
       },
       active: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true,
+        defaultValue: true
+      },
+      creatorId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
         allowNull: false
       },
       createdAt: {
@@ -39,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Accounts');
   }
 };

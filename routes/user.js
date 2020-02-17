@@ -6,10 +6,14 @@ var router  = express.Router();
 router.all('*', auth.verifyJWT_MW)
 
 router.get('/:userId', (req, res) => {
-  models.User.findByPk(req.params.userId).then((user) => {
+  models.User.findOne({
+    where: {
+      id: req.params.userId
+    },
+    attributes: models.User.getPublicAttributes(),
+  }).then((user) => {
     res.send(user);
-  })
-})
-
+  });
+});
 
 module.exports = router;

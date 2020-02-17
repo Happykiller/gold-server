@@ -6,9 +6,7 @@ module.exports = {
       firstName: 'John',
       lastName: 'Doe',
       email: 'example@example.com',
-      token: '...',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: new Date()
     }]);
   },
 

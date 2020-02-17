@@ -1,5 +1,8 @@
+@host = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20ifSwiaWF0IjoxNTgxOTUyMzU4LCJleHAiOjE1ODE5NTU5NTh9.TVvL-Bh2ExTXtFNwW0Plkx5saWThX3nx4hU7k5f6jHg
+
 ### For create token
-POST http://192.168.1.110:3000/auth/ HTTP/1.1
+POST {{host}}/auth/ HTTP/1.1
 content-type: application/json
 
 {
@@ -7,5 +10,19 @@ content-type: application/json
 }
 
 ### for get user by id
-GET http://192.168.1.110:3000/user/1 HTTP/1.1
-?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkRvZSIsImVtYWlsIjoiZXhhbXBsZUBleGFtcGxlLmNvbSJ9LCJpYXQiOjE1ODE0MzU2NzAsImV4cCI6MTU4MTQzOTI3MH0.8VhQhLGgtEdj4CLRW0ynx1ntIwaEVvN8PYVPrg1LQtw
+GET {{host}}/user/1 HTTP/1.1
+?token={{token}}
+
+
+### For create account
+POST {{host}}/account/ HTTP/1.1
+content-type: application/json
+
+{
+    "label": "test4",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20ifSwiaWF0IjoxNTgxOTUyMzU4LCJleHAiOjE1ODE5NTU5NTh9.TVvL-Bh2ExTXtFNwW0Plkx5saWThX3nx4hU7k5f6jHg"
+}
+
+### For get account
+GET {{host}}/account/1 HTTP/1.1
+?token={{token}}

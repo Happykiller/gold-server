@@ -54,6 +54,7 @@ router.post('/', (req, res) => {
         if(user !== null){
             var token = auth.createJWToken({
                 sessionData: {
+                    id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
                     email: user.email
