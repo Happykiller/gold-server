@@ -217,7 +217,7 @@ Create an account.
 
 + Response 401 (application/json)
 
-### Account [/account/{accountId}]
+### [/account/{accountId}]
 
 #### Get account [GET]
 
@@ -266,6 +266,228 @@ Create an account.
                         "type": "integer"
                     }
                 }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "message": "Invalid auth token provided."
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+
+#### Delete account [DELETE]
+
++ Parameters
+
+    + accountId: 42 (required) - Unique identifier for a account
+
++ Response 200 (application/json) OK
+
+    + Body
+
+            [
+                1
+            ]
+
+    + Schema
+
+            {
+                "type": "array"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "message": "Invalid auth token provided."
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+
+# Group Category
+
+## Category [/category]
+
+### Create an category [POST]
+Create an category.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "label": "a label",
+                "description": "a description"
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+        {
+            "id": 1,
+            "label": "label",
+            "description": "description",
+            "active": true,
+            "createdAt": "2020-02-17T14:14:52.000Z",
+            "updatedAt": "2020-02-17T14:14:52.000Z",
+            "creatorId": 1
+        }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "dateTime"
+                    },
+                    "updatedAt": {
+                        "type": "dateTime"
+                    },
+                    "creatorId": {
+                        "type": "integer"
+                    }
+                }
+            }
+
++ Response 401 (application/json)
+
+### [/category/{categoryId}]
+
+#### Get category [GET]
+
++ Parameters
+
+    + categoryId: 42 (required) - Unique identifier for a category
+
++ Response 200 (application/json) OK
+
+    + Body
+
+            {
+                "id": 1,
+                "label": "label",
+                "description": "description",
+                "active": true,
+                "createdAt": "2020-02-17T14:14:52.000Z",
+                "updatedAt": "2020-02-17T14:14:52.000Z",
+                "creatorId": 1
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "dateTime"
+                    },
+                    "updatedAt": {
+                        "type": "dateTime"
+                    },
+                    "creatorId": {
+                        "type": "integer"
+                    }
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "message": "Invalid auth token provided."
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+
+#### Delete category [DELETE]
+
++ Parameters
+
+    + categoryId: 42 (required) - Unique identifier for a category
+
++ Response 200 (application/json) OK
+
+    + Body
+
+            [
+                1
+            ]
+
+    + Schema
+
+            {
+                "type": "array"
             }
 
 + Response 400 (application/json)

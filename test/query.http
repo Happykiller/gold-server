@@ -1,6 +1,8 @@
-@host = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20ifSwiaWF0IjoxNTgxOTUyMzU4LCJleHAiOjE1ODE5NTU5NTh9.TVvL-Bh2ExTXtFNwW0Plkx5saWThX3nx4hU7k5f6jHg
+@host = http://192.168.1.110:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJTZWVkIiwiZW1haWwiOiJleGFtcGxlQGV4YW1wbGUuY29tIn0sImlhdCI6MTU4MzMzMjY3NiwiZXhwIjoxNTgzMzM2Mjc2fQ.9srapXc7BEFfQkyyz2DhBuc9SjqtPaaZF6De2STy30k
 
+
+### AUTH
 ### For create token
 POST {{host}}/auth/ HTTP/1.1
 content-type: application/json
@@ -9,11 +11,14 @@ content-type: application/json
     "email": "example@example.com"
 }
 
+
+### USER 
 ### for get user by id
 GET {{host}}/user/1 HTTP/1.1
 ?token={{token}}
 
 
+### ACCOUNT
 ### For create account
 POST {{host}}/account/ HTTP/1.1
 content-type: application/json
@@ -23,6 +28,29 @@ content-type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20ifSwiaWF0IjoxNTgxOTUyMzU4LCJleHAiOjE1ODE5NTU5NTh9.TVvL-Bh2ExTXtFNwW0Plkx5saWThX3nx4hU7k5f6jHg"
 }
 
+### delete account
+DELETE {{host}}/account/1 HTTP/1.1
+?token={{token}}
+
 ### For get account
 GET {{host}}/account/1 HTTP/1.1
+?token={{token}}
+
+
+### CATEGORY
+### For create category
+POST {{host}}/category/ HTTP/1.1
+content-type: application/json
+
+{
+    "label": "test",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyLCJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJTZWVkIiwiZW1haWwiOiJleGFtcGxlQGV4YW1wbGUuY29tIn0sImlhdCI6MTU4MzMzMjY3NiwiZXhwIjoxNTgzMzM2Mjc2fQ.9srapXc7BEFfQkyyz2DhBuc9SjqtPaaZF6De2STy30k"
+}
+
+### delete account
+DELETE {{host}}/account/1 HTTP/1.1
+?token={{token}}
+
+### For get category
+GET {{host}}/category/1 HTTP/1.1
 ?token={{token}}

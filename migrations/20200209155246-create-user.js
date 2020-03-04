@@ -36,7 +36,13 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE
       }
-    });
+    }).then(function () {
+      queryInterface.bulkInsert('Users', [{
+        firstName: 'system',
+        lastName: 'system',
+        createdAt: new Date()
+      }]);
+    });;
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Users');

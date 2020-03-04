@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Accounts', {
+    return queryInterface.createTable('Category', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,11 +13,10 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      type: {
-        type: Sequelize.ENUM,
+      description: {
+        type: Sequelize.STRING,
         allowNull: false,
-        values: ['account.type-regular', 'account.type-template'],
-        defaultValue: 'account.type-regular'
+        unique: true
       },
       active: {
         type: Sequelize.BOOLEAN,
@@ -38,9 +37,16 @@ module.exports = {
       updatedAt: {
         type: Sequelize.DATE
       }
+    }).then(function () {
+      queryInterface.bulkInsert('Category', [{
+        label: 'category.other',
+        description: 'category.other-desc',
+        creatorId: 1,
+        createdAt: new Date()
+      }]);
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Accounts');
+    return queryInterface.dropTable('Category');
   }
 };

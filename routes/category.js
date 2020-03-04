@@ -6,27 +6,27 @@ var router  = express.Router();
 router.all('*', auth.verifyJWT_MW);
 
 router.post('/', (req, res) => {
-  models.Account.create({
+  models.Category.create({
     label: req.body.label,
     creatorId: req.user.id
   },{
     association: models.User
-  }).then((account) => {
+  }).then((category) => {
     res.json({
-      id: account.id,
-      label: account.label
+      id: category.id,
+      label: category.label
     });
   });
 });
 
-router.delete('/:accountId', (req, res) => {
+router.delete('/:categoryId', (req, res) => {
   models.Account.update(
     {
       active: false
     },
     {
       where: {
-        id: req.params.accountId
+        id: req.params.categoryId
       }
     }
   ).then((result) => {
@@ -34,19 +34,19 @@ router.delete('/:accountId', (req, res) => {
   });
 });
 
-router.get('/:accountId', (req, res) => {
-  models.Account.findOne({
+router.get('/:categoryId', (req, res) => {
+  models.Category.findOne({
       where: {
-        id: req.params.accountId
+        id: req.params.categoryId
       },
-      attributes: models.Account.getPublicAttributes(),
+      attributes: models.Category.getPublicAttributes(),
       include: [{
         as: 'creator',
         model: models.User,
         attributes: models.User.getPublicAttributes()
       }]
-  }).then((account) => {
-    res.send(account);
+  }).then((category) => {
+    res.send(category);
   });
 });
 
